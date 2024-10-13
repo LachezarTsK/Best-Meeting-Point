@@ -8,14 +8,14 @@ class Solution {
     inline static const int HOUSE = 1;
 
 public:
-    int minTotalDistance(vector<vector<int>>& matrix) {
+    int minTotalDistance(vector<vector<int>>& matrix) const {
         vector<int> startRowsInAscendingOrder = findStartRowsInAscendingOrder(matrix);
         vector<int> startColumnsInAscendingOrder = findStartColumnsInAscendingOrder(matrix);
         return calculateDistance(startRowsInAscendingOrder) + calculateDistance(startColumnsInAscendingOrder);
     }
 
 private:
-    vector<int> findStartRowsInAscendingOrder(const vector<vector<int>>& matrix) {
+    vector<int> findStartRowsInAscendingOrder(const vector<vector<int>>& matrix) const {
         vector<int> startRowsInAscendingOrder;
         for (int row = 0; row < matrix.size(); ++row) {
             for (int column = 0; column < matrix[0].size(); ++column) {
@@ -27,7 +27,7 @@ private:
         return startRowsInAscendingOrder;
     }
 
-    vector<int> findStartColumnsInAscendingOrder(const vector<vector<int>>& matrix) {
+    vector<int> findStartColumnsInAscendingOrder(const vector<vector<int>>& matrix) const {
         vector<int> startColumnsInAscendingOrder;
         for (int column = 0; column < matrix[0].size(); ++column) {
             for (int row = 0; row < matrix.size(); ++row) {
@@ -39,7 +39,7 @@ private:
         return startColumnsInAscendingOrder;
     }
 
-    int calculateDistance(const vector<int>& positions) {
+    int calculateDistance(const vector<int>& positions) const {
         int front = 0;
         int end = positions.size() - 1;
         int totalDistance = 0;
